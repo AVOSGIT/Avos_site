@@ -1,0 +1,123 @@
+.section {
+  padding: var(--section-padding);
+  background: var(--color-bg-2);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0.75rem 0 0.75rem;
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: var(--color-text-2);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: var(--color-border-2);
+  transform: translateY(-2px);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.cardTitle {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--color-text-1);
+  line-height: 1.35;
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--color-text-2);
+  line-height: 1.65;
+}
+
+/* Diagram */
+.diagram {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  overflow-x: auto;
+}
+
+.diagramInner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 600px;
+}
+
+.diagramRow {
+  display: flex;
+  align-items: center;
+}
+
+.diagramNode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.diagramNode:hover {
+  border-color: var(--color-primary);
+}
+
+.diagramArrow {
+  padding: 0 0.5rem;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+}

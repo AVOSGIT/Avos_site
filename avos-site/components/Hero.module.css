@@ -1,0 +1,125 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+/* Background grid */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(30, 40, 54, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 40, 54, 0.4) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+/* Teal glow */
+.gradientBlob {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.statusRow {
+  animation: fade-in-up 0.5s ease both;
+}
+
+.headline {
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-text-1);
+  animation: fade-in-up 0.6s 0.1s ease both;
+  max-width: 780px;
+}
+
+.accent {
+  color: var(--color-primary);
+}
+
+.sub {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--color-text-2);
+  max-width: 560px;
+  line-height: 1.7;
+  animation: fade-in-up 0.6s 0.2s ease both;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fade-in-up 0.6s 0.3s ease both;
+}
+
+/* Protocol section */
+.protocolRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  animation: fade-in-up 0.6s 0.4s ease both;
+}
+
+.protocols {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.protocolBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-text-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  padding: 0.28rem 0.8rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.protocolBadge:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.protocolDot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .headline br { display: none; }
+  .ctas { flex-direction: column; align-items: flex-start; }
+}
