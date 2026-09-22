@@ -101,7 +101,6 @@ export default function Navbar() {
 
         {/* Right CTA */}
         <div className={styles.right}>
-          <span className={`status-badge ${styles.desktopBadge}`}>CORE 1.3.6</span>
           <a
             href="#cta"
             className={`btn btn-primary ${styles.desktopCta}`}
