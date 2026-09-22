@@ -21,7 +21,7 @@ export default function CTASection() {
           Ready to modernize your<br />industrial operations?
         </h2>
         <p className={styles.sub}>
-          Book a 15-minute architecture walk-through with our systems engineers.
+          Book a 15-minute architecture walk-through with our platform engineers.
         </p>
         <div className={styles.ctas}>
           <a

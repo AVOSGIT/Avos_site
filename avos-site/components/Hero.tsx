@@ -23,7 +23,7 @@ export default function Hero() {
       <div className={`container ${styles.inner}`}>
         {/* Top status */}
         <div className={styles.statusRow}>
-          <span className="status-badge">System Status · Installed &amp; Secure</span>
+          <span className="status-badge">Platform Status · Active &amp; Connected</span>
         </div>
 
         {/* Headline */}
@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
 
         <p className={styles.sub}>
-          The first AI-native operating system for modern machine fleets. Connect any PLC or sensor,
+          The AI-powered IoT platform for modern machine fleets. Connect any PLC or sensor,
           monitor in real time, and talk to your operations in plain English.
         </p>
 
@@ -59,7 +59,7 @@ export default function Hero() {
 
         {/* Protocol badges */}
         <div className={styles.protocolRow}>
-          <span className="label-muted">Industrial · Industrial · Connectivity · Ingestion</span>
+          <span className="label-muted">Industrial IoT Connectivity &amp; Ingestion</span>
           <div className={styles.protocols}>
             {protocols.map((p) => (
               <span key={p} className={styles.protocolBadge}>

@@ -1,7 +1,7 @@
 # AVOS — Marketing Site
 
 > **Industrial Telemetry into Autonomous Action.**  
-> The official landing page for AVOS — the first AI-native operating system for modern machine fleets.
+> The official landing page for AVOS — the AI-powered IoT platform for modern machine fleets.
 
 ---
 

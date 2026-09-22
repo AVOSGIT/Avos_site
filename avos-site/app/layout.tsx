@@ -4,12 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "AVOS – Industrial Telemetry into Autonomous Action",
   description:
-    "The first AI-native operating system for modern machine fleets. Connect any PLC or sensor, monitor in real time, and talk to your operations in plain English.",
+    "The AI-powered IoT platform for modern machine fleets. Connect any PLC or sensor, monitor in real time, and talk to your operations in plain English.",
   keywords: [
     "industrial IoT",
     "SCADA",
     "telemetry",
-    "AI operating system",
+    "AI IoT platform",
+    "AI-powered IoT platform",
     "OPC-UA",
     "MQTT",
     "Modbus",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AVOS – Industrial Telemetry into Autonomous Action",
     description:
-      "The first AI-native OS for modern machine fleets. Monitor, query, and autonomously act on industrial data in real time.",
+      "The AI-powered IoT platform for modern machine fleets. Monitor, query, and autonomously act on industrial data in real time.",
     type: "website",
     siteName: "AVOS",
   },
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AVOS – Industrial Telemetry into Autonomous Action",
     description:
-      "The first AI-native OS for modern machine fleets.",
+      "The AI-powered IoT platform for modern machine fleets.",
   },
 };
 

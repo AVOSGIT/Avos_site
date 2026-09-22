@@ -3,6 +3,8 @@
   background: var(--color-bg-2);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
 }
 
 .heading {
@@ -25,7 +27,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .card {
@@ -65,59 +67,457 @@
   line-height: 1.65;
 }
 
-/* Diagram */
-.diagram {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 2rem;
-  overflow-x: auto;
+/* ============================================================
+   CINEMATIC LIVE SIGNAL FLOW PIPELINE
+   ============================================================ */
+.pipeline {
+  background: linear-gradient(180deg, rgba(14, 19, 27, 0.95) 0%, rgba(8, 12, 17, 0.98) 100%);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem 1.75rem 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 170, 0.06);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-.diagramInner {
+.pipeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d4aa, #00ff88, transparent);
+  opacity: 0.8;
+}
+
+/* Header bar */
+.pipelineHeader {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pipelineStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pulseBeacon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+}
+
+.pulseBeaconCore {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88;
+}
+
+.pulseBeaconRing {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #00ff88;
+  animation: beaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.pipelineStatusText {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-1);
+}
+
+.pipelineTag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+
+.pipelineMetrics {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-text-3);
+  flex-wrap: wrap;
+}
+
+.metricItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.metricLabel {
+  color: var(--color-text-3);
+}
+
+.metricValue {
+  color: var(--color-text-2);
+  font-weight: 600;
+}
+
+.metricHighlight {
+  color: #00d4aa;
+  font-weight: 700;
+}
+
+.metricDivider {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================================
+   WORKFLOW TRACK: 100% WIDTH, ZERO SCROLLBAR, FULLY ALIGNED
+   ============================================================ */
+.flowTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 0;
-  min-width: 600px;
 }
 
-.diagramRow {
+/* Node Card with strict uniform height & vertical alignment */
+.nodeCard {
+  flex: 1 1 0;
+  min-width: 0; /* Prevents overflow */
+  height: 148px;
+  background: rgba(18, 25, 36, 0.9);
+  border: 1px solid rgba(0, 212, 170, 0.22);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.nodeCard:hover {
+  transform: translateY(-2px);
+  border-color: #00d4aa;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 212, 170, 0.2);
+}
+
+.nodeGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4aa, #00ff88);
+  opacity: 0.7;
+}
+
+/* Row 1: Step Number & LED */
+.nodeTop {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  height: 14px;
 }
 
-.diagramNode {
+.nodeStep {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--color-text-3);
+  letter-spacing: 0.08em;
+}
+
+.nodeLed {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00d4aa;
+  box-shadow: 0 0 5px #00d4aa;
+  animation: ledBlink 3s ease-in-out infinite alternate;
+}
+
+@keyframes ledBlink {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; box-shadow: 0 0 7px #00ff88; }
+}
+
+/* Row 2: Icon & Title */
+.nodeMain {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 26px;
+}
+
+.nodeIcon {
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border-2);
+  background: rgba(0, 212, 170, 0.1);
+  border: 1px solid rgba(0, 212, 170, 0.2);
   border-radius: var(--radius-sm);
-  padding: 0.6rem 1rem;
+  padding: 0.25rem;
+  flex-shrink: 0;
+}
+
+.nodeTitle {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text-1);
   white-space: nowrap;
-  transition: border-color 0.2s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 }
 
-.diagramNode:hover {
-  border-color: var(--color-primary);
+/* Row 3: Role */
+.nodeRole {
+  font-size: 0.7rem;
+  color: var(--color-text-2);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 }
 
-.diagramArrow {
-  padding: 0 0.5rem;
-  color: var(--color-primary);
-  font-size: 1.1rem;
-  opacity: 0.5;
+/* Row 4: Protocols & Rate */
+.nodeBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-@media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+.nodeSpec {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #00d4aa;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@media (max-width: 560px) {
-  .grid { grid-template-columns: 1fr; }
+.nodeRate {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  color: var(--color-text-3);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   ANIMATED CONDUIT (HORIZONTALLY BETWEEN NODES)
+   ============================================================ */
+.conduit {
+  position: relative;
+  flex: 0 0 clamp(16px, 2.5vw, 32px);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2px;
+}
+
+.conduitLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0, 212, 170, 0.2), rgba(0, 255, 136, 0.4), rgba(0, 212, 170, 0.2));
+  box-shadow: 0 0 6px rgba(0, 212, 170, 0.2);
+}
+
+/* Streaming Photons */
+.photon {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: photonFlow 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.photon1 {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  box-shadow: 0 0 8px #00ff88, 0 0 14px #00d4aa;
+  animation-delay: 0s;
+}
+
+.photon2 {
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  box-shadow: 0 0 6px #00ff88;
+  animation-delay: 0.9s;
+}
+
+@keyframes photonFlow {
+  0% {
+    left: 0%;
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    left: calc(100% - 5px);
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.conduitArrow {
+  position: absolute;
+  right: -2px;
+  color: rgba(0, 212, 170, 0.7);
+  font-size: 0.95rem;
+  line-height: 1;
+  font-family: var(--font-mono);
+  animation: arrowGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes arrowGlow {
+  0% { color: rgba(0, 212, 170, 0.4); }
+  100% { color: #00ff88; text-shadow: 0 0 6px #00ff88; }
+}
+
+/* ============================================================
+   BOTTOM OSCILLOSCOPE WAVEFORM
+   ============================================================ */
+.waveformRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+.waveformLabel {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.waveformWrapper {
+  flex: 1;
+  min-width: 200px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.waveformSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.waveformPulse {
+  stroke-dasharray: 200;
+  animation: waveFlow 4s linear infinite;
+}
+
+@keyframes waveFlow {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.waveformBadge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #00d4aa;
+  background: rgba(0, 212, 170, 0.08);
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN (NO HORIZONTAL SCROLL)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .pipeline {
+    padding: 1.25rem 1rem;
+  }
+  .pipelineHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .flowTrack {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .nodeCard {
+    width: 100%;
+    height: auto;
+    min-height: 96px;
+    gap: 0.4rem;
+  }
+  .conduit {
+    flex: 0 0 16px;
+    width: 2px;
+    height: 16px;
+    transform: rotate(90deg);
+  }
 }
