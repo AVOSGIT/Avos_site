@@ -1,9 +1,17 @@
 import styles from "./Footer.module.css";
 
 const footerLinks = {
-  System: ["Architecture", "Telemetry Engine", "AI Engine", "MCP Server", "UI Console"],
-  Support: ["Documentation", "Getting Started", "API Reference", "Community", "Status"],
-  Legal: ["Privacy Policy", "Terms of Service", "Security", "Compliance", "Cookie Policy"],
+  Platform: [
+    { label: "Architecture", href: "#architecture" },
+    { label: "Telemetry Engine", href: "#architecture" },
+    { label: "AI Engine", href: "#architecture" },
+    { label: "MCP Server", href: "#architecture" },
+    { label: "UI Console", href: "#architecture" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+  ],
 };
 
 export default function Footer() {
@@ -22,7 +30,7 @@ export default function Footer() {
             <span>AVOS</span>
           </a>
           <p className={styles.brandDesc}>
-            AI-native industrial operating system for modern machine fleets. Industrial intelligence, delivered.
+            AI-powered IoT platform for modern machine fleets. Industrial intelligence, delivered.
           </p>
           <div className={styles.protocols}>
             {["MQTT", "Modbus", "OPC-UA", "DNP3"].map((p) => (
@@ -31,19 +39,21 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Link columns */}
-        {Object.entries(footerLinks).map(([group, links]) => (
-          <div key={group} className={styles.col}>
-            <h4 className={styles.colHeading}>{group}</h4>
-            <ul className={styles.colLinks}>
-              {links.map((link) => (
-                <li key={link}>
-                  <a href="#" className={styles.colLink}>{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Link columns container */}
+        <div className={styles.linksGroup}>
+          {Object.entries(footerLinks).map(([group, links]) => (
+            <div key={group} className={styles.col}>
+              <h4 className={styles.colHeading}>{group}</h4>
+              <ul className={styles.colLinks}>
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className={styles.colLink}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Bottom bar */}

@@ -3,7 +3,7 @@ import styles from "./TargetScenarios.module.css";
 const scenarios = [
   {
     badge: "10× Faster Deployment",
-    tag: "System Deployment",
+    tag: "IoT Deployment",
     title: "Deploy & Connect in Hours",
     desc: "Stop spending weeks writing custom mapping scripts and proprietary PLC interfaces. Leverage standard instrumented stacks with self-documenting JSON journals.",
   },
@@ -11,13 +11,13 @@ const scenarios = [
     badge: "3× Added Machine Margin",
     tag: "Business Mindset / OEM",
     title: "Ship Intelligent Hardware",
-    desc: "Differentiate your machines by building AVOS directly into your hardware. Provide your clients with turn-key predictive alerts and natural language query planes.",
+    desc: "Differentiate your machines by integrating the AVOS platform directly with your hardware. Provide your clients with turn-key predictive alerts and natural language query planes.",
   },
   {
     badge: "28% Reduction in MTTR",
     tag: "Plant Operations",
     title: "Zero-Latency Anomaly Oversight",
-    desc: "Get context instantly. No more parsing cryptic terminal errors or digging through compliance forklifts while systems are experiencing heavy fault loops.",
+    desc: "Get context instantly. No more parsing cryptic terminal errors or digging through compliance logs while machines are experiencing heavy fault loops.",
   },
 ];
 

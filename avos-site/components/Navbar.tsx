@@ -77,7 +77,7 @@ export default function Navbar() {
             </svg>
           </span>
           <span className={styles.logoText}>AVOS</span>
-          <span className={styles.logoSub}>AI · IIoT · OS</span>
+          <span className={styles.logoSub}>AI · IIoT Platform</span>
         </a>
 
         {/* Desktop Nav */}
