@@ -1,17 +1,14 @@
 "use client";
 
 import styles from "./CTASection.module.css";
-
-function scrollToHash(hash: string) {
-  const id = hash.replace("#", "");
-  const el = document.getElementById(id);
-  if (!el) return;
-  const navHeight = 70;
-  const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
-  window.scrollTo({ top, behavior: "smooth" });
-}
+import { openContactMail } from "@/lib/contact";
 
 export default function CTASection() {
+  const handleWalkthroughClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openContactMail("Walkthrough Request - AVOS IoT Platform");
+  };
+
   return (
     <section className={styles.section} id="cta">
       <div className={styles.glow} aria-hidden="true" />
@@ -25,19 +22,12 @@ export default function CTASection() {
         </p>
         <div className={styles.ctas}>
           <a
-            href="mailto:demo@avos.io?subject=Demo%20Request%20-%20AVOS%20Architecture%20Walkthrough"
+            href="#contact"
             className="btn btn-primary"
             id="cta-book-walkthrough"
+            onClick={handleWalkthroughClick}
           >
             Book 15-Min Walkthrough
-          </a>
-          <a
-            href="#specs"
-            className="btn btn-ghost"
-            id="cta-read-specs"
-            onClick={(e) => { e.preventDefault(); scrollToHash("#specs"); }}
-          >
-            Read Technical Specs
           </a>
         </div>
       </div>
