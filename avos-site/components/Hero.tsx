@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./Hero.module.css";
+import { openContactMail } from "@/lib/contact";
 
 function scrollToHash(hash: string) {
   const id = hash.replace("#", "");
@@ -14,6 +15,11 @@ function scrollToHash(hash: string) {
 const protocols = ["MQTT", "Modbus", "OPC-UA", "HTTP", "CoAP", "DNP3"];
 
 export default function Hero() {
+  const handleDemoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openContactMail("Demo Request - AVOS IoT Platform");
+  };
+
   return (
     <section className={styles.hero} id="hero">
       {/* Background grid */}
@@ -40,10 +46,10 @@ export default function Hero() {
         {/* CTAs */}
         <div className={styles.ctas}>
           <a
-            href="#cta"
+            href="#contact"
             className="btn btn-primary"
             id="hero-request-demo"
-            onClick={(e) => { e.preventDefault(); scrollToHash("#cta"); }}
+            onClick={handleDemoClick}
           >
             Request a Demo
           </a>

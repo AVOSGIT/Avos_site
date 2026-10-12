@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
+import { openContactMail } from "@/lib/contact";
 
 const navLinks = [
   { label: "Terminal", href: "#terminal-demo" },
@@ -9,6 +10,7 @@ const navLinks = [
   { label: "Architecture", href: "#architecture" },
   { label: "Solutions", href: "#solutions" },
   { label: "Specs", href: "#specs" },
+  { label: "Compliance", href: "#compliance" },
 ];
 
 const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
@@ -31,7 +33,7 @@ export default function Navbar() {
   /* Scroll-spy via IntersectionObserver */
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-    const visible = new Map<string, number>(); // id → intersectionRatio
+    const visible = new Map<string, number>();
 
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -39,7 +41,6 @@ export default function Navbar() {
       const obs = new IntersectionObserver(
         ([entry]) => {
           visible.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
-          // Pick the section with the highest visibility
           let best = "";
           let bestRatio = 0;
           visible.forEach((ratio, key) => {
@@ -63,13 +64,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleDemoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    openContactMail("Demo Request - AVOS IoT Platform");
+  };
+
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <a href="#" className={styles.logo}>
+        <a href="/" className={styles.logo}>
           <span className={styles.logoIcon}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" role="img" aria-label="AVOS IoT Logo">
+              <title>AVOS IoT Logo</title>
               <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" opacity="0.9"/>
               <rect x="13" y="2" width="9" height="9" rx="2" fill="currentColor" opacity="0.5"/>
               <rect x="2" y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.5"/>
@@ -102,10 +110,10 @@ export default function Navbar() {
         {/* Right CTA */}
         <div className={styles.right}>
           <a
-            href="#cta"
+            href="#contact"
             className={`btn btn-primary ${styles.desktopCta}`}
             id="nav-request-demo"
-            onClick={(e) => { e.preventDefault(); scrollToHash("#cta"); }}
+            onClick={handleDemoClick}
           >
             Request a Demo
           </a>
@@ -142,10 +150,10 @@ export default function Navbar() {
           })}
           <div className={styles.mobileCta}>
             <a
-              href="#cta"
+              href="#contact"
               className="btn btn-primary"
               style={{ width: "100%", justifyContent: "center" }}
-              onClick={(e) => { e.preventDefault(); setMenuOpen(false); scrollToHash("#cta"); }}
+              onClick={handleDemoClick}
             >
               Request a Demo
             </a>
