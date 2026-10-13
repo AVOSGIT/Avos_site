@@ -26,7 +26,7 @@
   align-items: center;
   gap: 0.6rem;
   color: var(--color-primary);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.06em;
 }
@@ -52,8 +52,8 @@
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 600;
-  color: var(--color-text-3);
-  background: var(--color-surface);
+  color: var(--color-text-2);
+  background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 0.2rem 0.5rem;
@@ -106,6 +106,7 @@
 .bottomBar {
   border-top: 1px solid var(--color-border);
   padding: 1.25rem 0;
+  background: var(--color-bg);
 }
 
 .bottomInner {

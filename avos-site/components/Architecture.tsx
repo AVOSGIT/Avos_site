@@ -108,7 +108,7 @@ export default function Architecture() {
           Under the Hood: The AVOS Architecture
         </h2>
         <p className={styles.sub}>
-          Four tightly integrated engines working in concert — from raw signal acquisition to autonomous control.
+          Four tightly integrated engines working in concert - from raw signal acquisition to autonomous control.
         </p>
 
         <div className={styles.grid}>

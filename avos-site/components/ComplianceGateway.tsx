@@ -9,7 +9,7 @@ const complianceHighlights = [
       </svg>
     ),
     title: "Direct Regulatory Push",
-    desc: "Data is transmitted directly from on-site RTU hardware to CPCB or SPCB servers based on statutory requirements — with zero intermediate tampering.",
+    desc: "Data is transmitted directly from on-site RTU hardware to CPCB or SPCB servers based on statutory requirements - with zero intermediate tampering.",
   },
   {
     icon: (

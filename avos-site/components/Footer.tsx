@@ -52,7 +52,7 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.colHeading}>Contact</h4>
             <ul className={styles.colLinks}>
-              <li>
+              {/* <li>
                 <a
                   href="#contact"
                   className={styles.colLink}
@@ -61,7 +61,7 @@ export default function Footer() {
                 >
                   {CONTACT_DISPLAY}
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="#contact"

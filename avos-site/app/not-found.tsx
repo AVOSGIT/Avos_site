@@ -32,7 +32,7 @@ export default function NotFound() {
             transform: "translate(-50%, -50%)",
             width: "500px",
             height: "350px",
-            background: "radial-gradient(ellipse at center, rgba(0, 212, 170, 0.08) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse at center, rgba(0, 143, 117, 0.08) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
           aria-hidden="true"
@@ -42,9 +42,10 @@ export default function NotFound() {
           <div style={{
             fontFamily: "var(--font-mono)",
             fontSize: "0.8rem",
+            fontWeight: 600,
             color: "var(--color-primary)",
-            background: "rgba(0, 212, 170, 0.08)",
-            border: "1px solid rgba(0, 212, 170, 0.25)",
+            background: "var(--color-primary-glow)",
+            border: "1px solid rgba(0, 143, 117, 0.25)",
             padding: "0.25rem 0.75rem",
             borderRadius: "6px",
             display: "inline-block",
