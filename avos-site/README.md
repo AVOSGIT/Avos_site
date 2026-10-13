@@ -1,7 +1,7 @@
-# AVOS — Marketing Site
+# AVOS - Marketing Site
 
 > **Industrial Telemetry into Autonomous Action.**  
-> The official landing page for AVOS — the AI-powered IoT platform for modern machine fleets.
+> The official landing page for AVOS - the AI-powered IoT platform for modern machine fleets.
 
 ---
 
@@ -27,7 +27,7 @@ This is the public-facing marketing site for AVOS, built with **Next.js 15** and
 
 - **Framework:** [Next.js 15](https://nextjs.org) (App Router)
 - **Language:** TypeScript
-- **Styling:** Vanilla CSS with CSS Modules — no Tailwind, no UI library
+- **Styling:** Vanilla CSS with CSS Modules - no Tailwind, no UI library
 - **Fonts:** [Inter](https://fonts.google.com/specimen/Inter) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) via Google Fonts
 - **Animations:** Pure CSS keyframes + `IntersectionObserver` for scroll-spy
 
@@ -112,7 +112,7 @@ All design decisions live in `app/globals.css` under `:root`:
 
 ## Deployment
 
-Deploy to [Vercel](https://vercel.com) in one click — it's the recommended platform for Next.js.
+Deploy to [Vercel](https://vercel.com) in one click - it's the recommended platform for Next.js.
 
 ```bash
 npx vercel
@@ -129,4 +129,4 @@ Or connect the GitHub repo to Vercel for automatic deployments on every push to 
 3. Open a pull request with a descriptive title
 
 Commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) format:  
-`type(scope): description` — e.g. `fix(navbar): correct active link scroll offset`
+`type(scope): description` - e.g. `fix(navbar): correct active link scroll offset`

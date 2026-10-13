@@ -13,6 +13,7 @@
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin: 0.75rem 0 0.75rem;
+  color: var(--color-text-1);
 }
 
 .sub {
@@ -38,19 +39,21 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  transition: border-color 0.2s, transform 0.2s;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-  border-color: var(--color-border-2);
+  border-color: var(--color-primary);
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 143, 117, 0.1);
 }
 
 .num {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
 }
 
@@ -68,14 +71,14 @@
 }
 
 /* ============================================================
-   CINEMATIC LIVE SIGNAL FLOW PIPELINE
+   CINEMATIC LIVE SIGNAL FLOW PIPELINE - LIGHT THEME
    ============================================================ */
 .pipeline {
-  background: linear-gradient(180deg, rgba(14, 19, 27, 0.95) 0%, rgba(8, 12, 17, 0.98) 100%);
-  border: 1px solid rgba(0, 212, 170, 0.2);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: 1.5rem 1.75rem 1.25rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 170, 0.06);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -87,9 +90,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00d4aa, #00ff88, transparent);
-  opacity: 0.8;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #008f75 30%, #059669 70%, transparent);
+  opacity: 0.9;
 }
 
 /* Header bar */
@@ -99,7 +102,7 @@
   justify-content: space-between;
   padding-bottom: 1rem;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--color-border);
   flex-wrap: wrap;
   gap: 0.75rem;
 }
@@ -123,8 +126,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #00ff88;
-  box-shadow: 0 0 8px #00ff88;
+  background: var(--color-green);
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
 }
 
 .pulseBeaconRing {
@@ -132,7 +135,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 1px solid #00ff88;
+  border: 1px solid var(--color-green);
   animation: beaconPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -153,9 +156,9 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 600;
-  color: #00ff88;
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: var(--color-green);
+  background: var(--color-green-dim);
+  border: 1px solid rgba(5, 150, 105, 0.25);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   letter-spacing: 0.06em;
@@ -182,17 +185,17 @@
 }
 
 .metricValue {
-  color: var(--color-text-2);
+  color: var(--color-text-1);
   font-weight: 600;
 }
 
 .metricHighlight {
-  color: #00d4aa;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
 .metricDivider {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--color-border-2);
 }
 
 /* ============================================================
@@ -209,10 +212,10 @@
 /* Node Card with strict uniform height & vertical alignment */
 .nodeCard {
   flex: 1 1 0;
-  min-width: 0; /* Prevents overflow */
+  min-width: 0;
   height: 148px;
-  background: rgba(18, 25, 36, 0.9);
-  border: 1px solid rgba(0, 212, 170, 0.22);
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 0.8rem 0.7rem;
   display: flex;
@@ -220,15 +223,15 @@
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  backdrop-filter: blur(10px);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
   box-sizing: border-box;
 }
 
 .nodeCard:hover {
   transform: translateY(-2px);
-  border-color: #00d4aa;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 212, 170, 0.2);
+  background: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), 0 0 15px rgba(0, 143, 117, 0.1);
 }
 
 .nodeGlow {
@@ -237,8 +240,8 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #00d4aa, #00ff88);
-  opacity: 0.7;
+  background: linear-gradient(90deg, #008f75, #059669);
+  opacity: 0.85;
 }
 
 /* Row 1: Step Number & LED */
@@ -261,14 +264,14 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #00d4aa;
-  box-shadow: 0 0 5px #00d4aa;
+  background: var(--color-primary);
+  box-shadow: 0 0 5px rgba(0, 143, 117, 0.5);
   animation: ledBlink 3s ease-in-out infinite alternate;
 }
 
 @keyframes ledBlink {
-  0% { opacity: 0.4; }
-  100% { opacity: 1; box-shadow: 0 0 7px #00ff88; }
+  0% { opacity: 0.5; }
+  100% { opacity: 1; box-shadow: 0 0 7px rgba(5, 150, 105, 0.8); }
 }
 
 /* Row 2: Icon & Title */
@@ -284,8 +287,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 212, 170, 0.1);
-  border: 1px solid rgba(0, 212, 170, 0.2);
+  background: rgba(0, 143, 117, 0.08);
+  border: 1px solid rgba(0, 143, 117, 0.2);
   border-radius: var(--radius-sm);
   padding: 0.25rem;
   flex-shrink: 0;
@@ -320,13 +323,14 @@
   flex-direction: column;
   gap: 2px;
   padding-top: 0.35rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border);
 }
 
 .nodeSpec {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  color: #00d4aa;
+  font-weight: 600;
+  color: var(--color-primary);
   letter-spacing: 0.02em;
   white-space: nowrap;
   overflow: hidden;
@@ -359,8 +363,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, rgba(0, 212, 170, 0.2), rgba(0, 255, 136, 0.4), rgba(0, 212, 170, 0.2));
-  box-shadow: 0 0 6px rgba(0, 212, 170, 0.2);
+  background: linear-gradient(90deg, rgba(0, 143, 117, 0.2), rgba(0, 143, 117, 0.6), rgba(0, 143, 117, 0.2));
 }
 
 /* Streaming Photons */
@@ -374,16 +377,16 @@
 .photon1 {
   width: 6px;
   height: 6px;
-  background: #ffffff;
-  box-shadow: 0 0 8px #00ff88, 0 0 14px #00d4aa;
+  background: #008f75;
+  box-shadow: 0 0 8px rgba(0, 143, 117, 0.7);
   animation-delay: 0s;
 }
 
 .photon2 {
   width: 4px;
   height: 4px;
-  background: #00ff88;
-  box-shadow: 0 0 6px #00ff88;
+  background: #059669;
+  box-shadow: 0 0 6px rgba(5, 150, 105, 0.7);
   animation-delay: 0.9s;
 }
 
@@ -411,7 +414,7 @@
 .conduitArrow {
   position: absolute;
   right: -2px;
-  color: rgba(0, 212, 170, 0.7);
+  color: var(--color-primary);
   font-size: 0.95rem;
   line-height: 1;
   font-family: var(--font-mono);
@@ -419,8 +422,8 @@
 }
 
 @keyframes arrowGlow {
-  0% { color: rgba(0, 212, 170, 0.4); }
-  100% { color: #00ff88; text-shadow: 0 0 6px #00ff88; }
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 /* ============================================================
@@ -433,7 +436,7 @@
   gap: 1.25rem;
   margin-top: 1.5rem;
   padding-top: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
   flex-wrap: wrap;
 }
 
@@ -475,9 +478,9 @@
   font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 600;
-  color: #00d4aa;
-  background: rgba(0, 212, 170, 0.08);
-  border: 1px solid rgba(0, 212, 170, 0.25);
+  color: var(--color-primary);
+  background: var(--color-primary-glow);
+  border: 1px solid rgba(0, 143, 117, 0.25);
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   letter-spacing: 0.06em;

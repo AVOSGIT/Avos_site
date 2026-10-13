@@ -24,6 +24,7 @@
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.02em;
+  color: var(--color-text-1);
 }
 
 .body {
@@ -43,15 +44,18 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.1rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition: border-color 0.2s;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .feature:hover {
   border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .featureIcon {
@@ -63,7 +67,7 @@
 .featureTitle {
   display: block;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-1);
   margin-bottom: 0.35rem;
 }
@@ -74,18 +78,17 @@
   line-height: 1.6;
 }
 
-/* Terminal */
+/* Terminal - High Contrast Developer IDE Block */
 .terminalCol {
   position: relative;
 }
 
 .terminal {
-  background: #0c1118;
-  border: 1px solid var(--color-border-2);
+  background: #0f172a;
+  border: 1px solid #1e293b;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 212, 170, 0.08);
-  animation: glow-pulse 4s ease-in-out infinite;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15), 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
 .titlebar {
@@ -93,8 +96,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.65rem 1rem;
-  background: #0f1721;
-  border-bottom: 1px solid var(--color-border);
+  background: #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dots {
@@ -113,7 +116,7 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
-  color: var(--color-text-3);
+  color: #94a3b8;
   text-transform: uppercase;
 }
 
@@ -124,7 +127,7 @@
 
 .termBtn {
   font-size: 0.75rem;
-  color: var(--color-text-3);
+  color: #64748b;
   cursor: default;
   padding: 0 0.25rem;
 }
@@ -135,42 +138,43 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.8;
+  color: #e2e8f0;
 }
 
 /* Line types */
-.prompt { color: var(--color-text-3); }
+.prompt { color: #64748b; }
 
 .query {
-  color: var(--color-text-1);
-  opacity: 0.9;
+  color: #f8fafc;
+  font-weight: 500;
 }
 
 .label {
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary);
-  opacity: 0.8;
+  color: #38bdf8;
+  opacity: 0.9;
 }
 
 .thinking {
-  color: var(--color-text-2);
+  color: #94a3b8;
   font-style: italic;
 }
 
 .code {
-  color: var(--color-primary);
-  background: rgba(0, 212, 170, 0.07);
-  border: 1px solid rgba(0, 212, 170, 0.15);
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.25);
   border-radius: 4px;
   padding: 0.35rem 0.75rem;
   margin: 0.25rem 0;
 }
 
 .alert {
-  color: #f0c040;
-  background: rgba(240, 192, 64, 0.07);
-  border: 1px solid rgba(240, 192, 64, 0.15);
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.25);
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
   white-space: pre-wrap;
@@ -183,7 +187,7 @@
   display: inline-block;
   width: 8px;
   height: 14px;
-  background: var(--color-primary);
+  background: #2dd4bf;
   border-radius: 1px;
   animation: cursor-blink 1s step-end infinite;
   vertical-align: middle;
